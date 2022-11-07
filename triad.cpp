@@ -8,7 +8,9 @@ Created by Marc Bolinches
 #include <fstream>
 #include <mpi.h>
 
-#ifndef Ffloat
+#ifdef _DOUBLE_
+#define Fflow double
+#else
 #define Ffloat float
 #endif
 
@@ -82,7 +84,7 @@ int main(int narg, char **argv)
   avgTime /= double(repeat);
 
   if( rank == 0 )
-    cout << "GFlops/sec " << 2.*double(Narray*n)/avgTime*1e-6 << endl;
+    cout << "GFlops/sec " << 2.*double(Narray)/avgTime*1e-6 << endl;
 
   delete[] a, b, c;
 
