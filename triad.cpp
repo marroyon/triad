@@ -9,7 +9,7 @@ Created by Marc Bolinches
 #include <mpi.h>
 
 #ifdef _DOUBLE_
-#define Fflow double
+#define Ffloat double
 #else
 #define Ffloat float
 #endif
