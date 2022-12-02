@@ -46,6 +46,7 @@ int main(int narg, char **argv)
   Ffloat *a  = new Ffloat[Narray];
   Ffloat *b  = new Ffloat[Narray];
   Ffloat *c  = new Ffloat[Narray];
+  Ffloat *d  = new Ffloat[Narray];
 
   // initialize arrays
   for( size_t i = 0; i < Narray; i++)
@@ -53,6 +54,7 @@ int main(int narg, char **argv)
     a[i] = rand();
     b[i] = rand();
     c[i] = rand();
+    d[i] = rand();
   }
 
   // repeat excercise "repeat" times and average times
@@ -65,7 +67,7 @@ int main(int narg, char **argv)
     // operations that need to be measured
     for( size_t i = 0; i < Narray; i++)
     {
-      a[i] = b[i] + c[i];
+      a[i] = b[i] + c[i]*d[i];
     }
 
     avgTime += MPI_Wtime() - time;
@@ -78,6 +80,7 @@ int main(int narg, char **argv)
       a[i] = rand();
       b[i] = rand();
       c[i] = rand();
+      d[i] = rand();
     }
   }
 
@@ -86,7 +89,7 @@ int main(int narg, char **argv)
   if( rank == 0 )
     cout << "GFlops/sec " << 2.*double(Narray)/avgTime*1e-6 << endl;
 
-  delete[] a, b, c;
+  delete[] a, b, c, d;
 
   MPI_Finalize();
   return 0;

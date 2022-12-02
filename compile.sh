@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mpic++ triad.cpp -o triad.p
+mpic++ -g -O3 triad.cpp -o triad.p
